@@ -78,4 +78,6 @@ First error I encountered was setting the dtype to "auto"
 "dtype auto" made vLLM choose bfloat16, since the GPU supports it. But GPTQ quantized models are not compatible with bfloat16.
 - Deeper Explaination: GPTQ is a quantization method that pre-compresses weights (e.g., 4-bit or 8-bit). These quantized weights aren’t compatible with bfloat16 (bf16). Instead, GPTQ models are meant to be loaded in float16 (fp16) or int4/int8, depending on how they were built.
 
+### SafeTensor Error: header too large
+
 
