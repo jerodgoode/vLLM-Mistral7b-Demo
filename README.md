@@ -2,7 +2,6 @@
 Serving Mistral-7B with vLLM in a Python Virtual Environment
 
 ## PROJECT DESCRIPTION
-
 This project documents how to set up and serve the **Mistral-7B-Instruct** model using the [vLLM](https://github.com/vllm-project/vllm) inference engine inside a Python virtual environment. The environment was tested on an **NVIDIA A10 GPU** cloud instance.
 
 ## SETUP PROCESS
