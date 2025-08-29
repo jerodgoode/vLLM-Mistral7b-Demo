@@ -17,8 +17,7 @@ This project documents how to set up and serve the **Mistral-7B-Instruct** model
 </pre>
 - Python copies its interpreter and standard libraries into a new isolated folder (vllm-env/)
 - It updates the shell’s $PATH so that when you type python or pip, it points to the copies inside vllm-env/, not your system ones.
-- Because the environment is active, you’re upgrading pip inside the venv only.
-This ensures you have the latest installer before you start adding packages like vllm or torch
+- Upgrades pip inside the venv to ensure the latest installer before adding packages.
 
 
 ### 2. Install PyTorch
@@ -75,7 +74,7 @@ Now that Mistral-7B is up and running, test it using "curl"
   }'
 </pre>
 
-Mistral-7B will send back a text output response. In trial, this was the response received: 
+Mistral-7B will send back a text output response. This was the response received: 
 <pre>
   {
     "id":"chatcmpl-<redacted>",
@@ -147,7 +146,7 @@ This resulted in the following error:
 </pre>
 - Explaination: 
 - This error was caused because safetensors tried to read the file’s header (the metadata about tensors in the file), but it was corrupted or incomplete.
-- “Header too large” usually happens when the model weights didn’t download correctly — often because of Git LFS (Large File Storage... more on that below).
+- “Header too large” usually happens when the model weights didn’t download correctly — often because of Git LFS (Large File Storage... Explained below).
 
 The issue can be resolved by removing Mistral-7B and reinstalling it. The -rf flags tell rm to delete the directory and all of its contents recursively, and to do so forcefully without prompts. This ensures that no leftover or potentially corrupted files remain.
 <pre>
