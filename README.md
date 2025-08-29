@@ -2,7 +2,7 @@
 Serving Mistral-7B with vLLM in a Python virtual environment on NVIDIA A10
 
 ## PROJECT DESCRIPTION
-This project documents how to set up and serve the **Mistral-7B-Instruct** model using the [vLLM](https://github.com/vllm-project/vllm) inference engine inside a Python virtual environment. The environment was tested on an **NVIDIA A10 GPU** cloud instance. Mistral-7B was chosen for this project due to it's performance comparatively to the LLaMA 2 family, another LLM developed by Meta. Below are Mistral's performance vs LLaMA:
+This project documents how to set up and serve the **Mistral-7B-Instruct** model using the [vLLM](https://github.com/vllm-project/vllm) inference engine inside a Python virtual environment. The environment was tested on an **NVIDIA A10 GPU** cloud instance. Mistral-7B was chosen for this project due to its performance comparatively to the LLaMA 2 family, another LLM developed by Meta. Below is a comparison of Mistral-7B’s performance vs. LLaMA:
 
 ![source: https://mistral.ai/news/announcing-mistral-7b](https://raw.githubusercontent.com/jerodgoode/vLLM-Mistral7b-Demo/photos/Mistral7B.png)
 
@@ -75,7 +75,7 @@ Now that Mistral-7B is up and running, test it using "curl"
   }'
 </pre>
 
-Mistral will send back a text output response. In trial, this was the response received: 
+Mistral-7B will send back a text output response. In trial, this was the response received: 
 <pre>
   {
     "id":"chatcmpl-<redacted>",
@@ -117,7 +117,7 @@ The server returned a JSON object containing:
 This shows that:
 - The model was successfully served by vLLM
 - The API correctly responded to a chat request
-- The Mistral model produced a valid text output
+- The Mistral-7B model produced a valid text output
 
 
 <br>
@@ -155,13 +155,13 @@ The issue can be resolved by removing Mistral-7B and reinstalling it. The -rf fl
   git clone https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ
 </pre>
 
-Before moving on to the next step and entering the Mistral file directory, Ensure that Git LFS is installed in the virtual environment:
+Before moving on to the next step and entering the Mistral-7B file directory, Ensure that Git LFS is installed in the virtual environment:
 <pre>
   sudo apt install git-lfs
   git lfs install
 </pre>
 
-After Git LFS is installed, move into the Mistral file directory and run "Git LFS pull"
+After Git LFS is installed, move into the Mistral-7B file directory and run "Git LFS pull"
 <pre>
   cd Mistral-7B-Instruct-v0.2-GPTQ
   git LFS pull
