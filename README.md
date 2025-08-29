@@ -62,7 +62,7 @@ System output:
 - This launches vLLM’s OpenAI-compatible server on port 8000, serving the locally stored Mistral-7B-Instruct v0.2 GPTQ model in fp16 precision.
 
 ### 5. Querying the LLM
-Now that Mistral-7B is up and running, you can test it using "curl"
+Now that Mistral-7B is up and running, test it using "curl"
 <pre>
   curl -s http://localhost:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
