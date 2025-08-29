@@ -2,17 +2,17 @@
 Serving Mistral-7B with vLLM in a Python virtual environment on NVIDIA A10
 
 ## TABLE OF CONTENTS
-1. Project Description
-2. Setup Process
+1. **Project Description**
+2. **Setup Process**
    <br>2.1 - Create Python Virtual Environment
    <br>2.2 - Install PyTorch
    <br>2.3 - Verify Setup
    <br>2.4 - Start the vLLM Open AI compatible server
    <br>2.5 - Querying the LLM
-3. Errors Encountered
+3. **Errors Encountered**
    <br>3.1 - Error #1: Wrong dtype with GPTQ
    <br>3.2 - Error #2: SafeTensor error "Header too large"
-4. License
+4. **License**
 
 
 ## 1. PROJECT DESCRIPTION
