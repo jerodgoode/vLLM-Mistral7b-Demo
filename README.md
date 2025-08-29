@@ -1,29 +1,29 @@
 # vLLM Mistral-7B Demo
 Serving Mistral-7B with vLLM in a Python virtual environment on NVIDIA A10
 
-##TABLE OF CONTENTS
-- Project Description
-- Setup Process
-  <br>[1.] Create Python Virtual Environment
-  <br>[2.] Install PyTorch
-  <br>[3.] Verify Setup
-  <br>[4.] Start the vLLM Open AI compatible server
-  <br>[5.] Querying the LLM
+## TABLE OF CONTENTS
+1. Project Description
+2. Setup Process
+   <br>2.1 - Create Python Virtual Environment
+   <br>2.2 - Install PyTorch
+   <br>2.3 - Verify Setup
+   <br>2.4 - Start the vLLM Open AI compatible server
+   <br>2.5 - Querying the LLM
+3. Errors Encountered
+   <br>3.1 - Error #1: Wrong dtype with GPTQ
+   <br>3.2 - Error #2: SafeTensor error "Header too large"
+4. License
 
-- Errors Encountered
-  <br>Error #1: Wrong dtype with GPTQ
-  <br>Error #2: SafeTensor error "Header too large"
-- License
 
-## PROJECT DESCRIPTION
+## 1. PROJECT DESCRIPTION
 This project documents how to set up and serve the **Mistral-7B-Instruct** model using the [vLLM](https://github.com/vllm-project/vllm) inference engine inside a Python virtual environment. The environment was tested on an **NVIDIA A10 GPU** cloud instance. Mistral-7B was chosen for this project due to its performance comparatively to the LLaMA 2 family, another LLM developed by Meta. Below is a comparison of Mistral-7B’s performance vs. LLaMA:
 
 ![source: https://mistral.ai/news/announcing-mistral-7b](https://raw.githubusercontent.com/jerodgoode/vLLM-Mistral7b-Demo/photos/Mistral7B.png)
 
 
-## SETUP PROCESS
+## 2. SETUP PROCESS
 
-### 1. Create Python Virtual Environment
+### 2.1 - Create Python Virtual Environment
 <pre>
   python3 -m venv vllm-env 
   source vllm-env/bin/activate 
@@ -34,14 +34,14 @@ This project documents how to set up and serve the **Mistral-7B-Instruct** model
 - Upgrades pip inside the venv to ensure the latest installer before adding packages.
 
 
-### 2. Install PyTorch
+### 2.2 - Install PyTorch
 <pre>
   pip install "vllm[torch]"
 </pre>
 - pip checks for the latest release of vllm and installs PyTorch
 - Everything gets installed into the virtual environment vllm-env
 
-### 3. Verify Setup
+### 2.3 - Verify Setup
 Switch to the python shell.
 <pre>
   python
@@ -66,7 +66,7 @@ System output:
 </pre>
 - This should be the expected output. If the output doesn't match, there was an error during setup. 
 
-### 4. Start the vLLM OpenAI compatible server
+### 2.4 - Start the vLLM OpenAI compatible server
 
 <pre>
   python3 -m vllm.entrypoints.openai.api_server
@@ -77,7 +77,7 @@ System output:
 </pre>
 - This launches vLLM’s OpenAI-compatible server on port 8000, serving the locally stored Mistral-7B-Instruct v0.2 GPTQ model in fp16 precision.
 
-### 5. Querying the LLM
+### 2.5 - Querying the LLM
 Now that Mistral-7B is up and running, test it using "curl"
 <pre>
   curl -s http://localhost:8000/v1/chat/completions \
@@ -135,8 +135,8 @@ This shows that:
 
 <br>
 
-## Errors encountered
-### Error #1: Wrong dtype with GPTQ
+## 3. Errors encountered
+### 3.1 - Error #1: Wrong dtype with GPTQ
 
 The server was started with this command:
 <pre>
@@ -153,7 +153,7 @@ This resulted in the following error:
 "dtype auto" made vLLM choose bfloat16, since the GPU supports it. But GPTQ quantized models are not compatible with bfloat16.
 - Deeper Explaination: GPTQ is a quantization method that pre-compresses weights (e.g., 4-bit or 8-bit). These quantized weights aren’t compatible with bfloat16 (bf16). Instead, GPTQ models are meant to be loaded in float16 (fp16) or int4/int8, depending on how they were built.
 
-### Error 2: SafeTensor error "header too large"
+### 3.2 - Error 2: SafeTensor error "header too large"
 
 <pre>
   safetensors_rust.SafetensorError: Error while deserializing header: header too large
@@ -183,5 +183,5 @@ After Git LFS is installed, move into the Mistral-7B file directory and run "Git
 - When vLLM tries to load those stubs as real model weights → safetensors chokes → error
 - Doing this process, Git will actually fetch the multi-GB .safetensors files instead of stubs and you should be able to proceed without error. 
 
-## License
+## 4. License
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
