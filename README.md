@@ -19,6 +19,7 @@ Serving Mistral-7B with vLLM in a Python virtual environment on NVIDIA A10
 This project documents how to set up and serve the **Mistral-7B-Instruct** model using the [vLLM](https://github.com/vllm-project/vllm) inference engine inside a Python virtual environment. The environment was tested on an **NVIDIA A10 GPU** cloud instance. Mistral-7B was chosen for this project due to its performance comparatively to the LLaMA 2 family, another LLM developed by Meta. Below is a comparison of Mistral-7B’s performance vs. LLaMA:
 
 ![source: https://mistral.ai/news/announcing-mistral-7b](https://raw.githubusercontent.com/jerodgoode/vLLM-Mistral7b-Demo/photos/Mistral7B.png)
+source: https://mistral.ai/news/announcing-mistral-7b
 
 
 ## 2. SETUP PROCESS
