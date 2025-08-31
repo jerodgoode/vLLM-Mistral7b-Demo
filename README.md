@@ -1,5 +1,5 @@
 # vLLM Mistral-7B Demo
-Serving Mistral-7B with vLLM in a Python virtual environment on NVIDIA A10
+Walkthrough: Serving Mistral-7B with vLLM in a Python virtual environment on NVIDIA A10
 
 ## TABLE OF CONTENTS
 1. **Project Description**
